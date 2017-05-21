@@ -3,8 +3,6 @@ package com.habr.gui;
 import javax.swing.*;
 import java.awt.*;
 
-import static com.habr.parser.Parser.*;
-
 public class ClientUI extends JFrame {
 
     TextArea ta;
@@ -37,7 +35,6 @@ public class ClientUI extends JFrame {
         add(new ControlPanel(), BorderLayout.EAST);
         add(new ContentPanel(), BorderLayout.CENTER);
         add(new BackComandPanel(), BorderLayout.WEST);
-        getContentOfHTTPPage("kek");
     }
 
 
