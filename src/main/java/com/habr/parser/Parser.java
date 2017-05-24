@@ -7,11 +7,9 @@ import java.net.URLConnection;
 
 public class Parser {
 
-    Parser(){
+    private static String content = "";
 
-    }
-
-    public static String getContentOfHTTPPage(String pageAddress) throws Exception {
+    private static String getContentOfHTTPPage(String pageAddress) throws Exception {
         StringBuilder sb = new StringBuilder();
         URL pageURL = new URL(pageAddress);
         URLConnection uc = pageURL.openConnection();
@@ -25,5 +23,13 @@ public class Parser {
             br.close();
         }
         return sb.toString();
+    }
+
+    public static void setContentStringWithHTML(String pageAddress) {
+        try {
+            content = getContentOfHTTPPage(pageAddress);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

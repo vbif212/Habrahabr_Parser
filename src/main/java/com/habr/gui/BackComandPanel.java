@@ -4,14 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BackComandPanel extends JPanel {
+
     JButton backButton;
 
-    BackComandPanel(){
+    BackComandPanel() {
         addBackButton();
         setBackground(Color.white);
     }
 
-    private void addBackButton(){
+    private void addBackButton() {
         ImageIcon imageIcon = new ImageIcon("icons//back.png");
         backButton = new JButton(imageIcon);
         backButton.setBackground(Color.white);
@@ -19,6 +20,11 @@ public class BackComandPanel extends JPanel {
         backButton.setBorderPainted(false);
         backButton.setSize(getWidth(), getHeight());
         backButton.setEnabled(false);
+
+        backButton.addActionListener(event -> {
+
+        });
+
         add(backButton);
     }
 }

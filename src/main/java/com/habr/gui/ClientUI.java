@@ -31,13 +31,10 @@ public class ClientUI extends JFrame {
         ImageIcon ic = new ImageIcon("img.png");
         JLabel l = new JLabel(ic);
         add(l);*/
-        getRootPane().setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.black));
-        add(new ControlPanel(), BorderLayout.EAST);
+        // getRootPane().setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.darkGray));
         add(new ContentPanel(), BorderLayout.CENTER);
         add(new BackComandPanel(), BorderLayout.WEST);
     }
-
-
 
 
 }

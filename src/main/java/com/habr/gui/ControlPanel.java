@@ -17,55 +17,43 @@ public class ControlPanel extends JPanel {
     private JButton updateButton;
     private ArrayList<JButton> buttonList;
 
+    private String currentContent;
+
     ControlPanel() {
-        setBackground(Color.darkGray);
+        setBackground(Color.white);
         setLayout(new GridBagLayout());
         GUI();
+        currentContent = "";
     }
 
     private void GUI() {
         addButtonToViewBestArticles();
         addButtonToViewAllArticles();
         addButtonsForSelecting();
-        addUpdateButton();
     }
 
     private void addButtonToViewBestArticles() {
         buttonToViewBestArticles = new JButton("Лучшие статьи");
-        buttonToViewBestArticles.setBackground(Color.gray);
-        buttonToViewBestArticles.setForeground(Color.white);
-        buttonToViewBestArticles.setFocusPainted(false);
-        buttonToViewBestArticles.setBorderPainted(false);
+        setButton(buttonToViewBestArticles);
 
         buttonToViewBestArticles.addActionListener(event -> {
             setEnabledButton(buttonToViewBestOfDayArticles, true);
-            try {
-                Parser.getContentOfHTTPPage("https://habrahabr.ru/top/");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            setContentString("https://habrahabr.ru/top/");
         });
 
         add(buttonToViewBestArticles,
                 new GridBagConstraints(0, 0, 2, 1, 0, 0,
                         GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
-                        new Insets(1, 0, 1, 0), 0, 0));
+                        new Insets(1, 0, 0, 0), 0, 0));
     }
 
     private void addButtonToViewAllArticles() {
         buttonToViewAllArticles = new JButton("Все статьи");
-        buttonToViewAllArticles.setBackground(Color.gray);
-        buttonToViewAllArticles.setForeground(Color.white);
-        buttonToViewAllArticles.setFocusPainted(false);
-        buttonToViewAllArticles.setBorderPainted(false);
+        setButton(buttonToViewAllArticles);
 
         buttonToViewAllArticles.addActionListener(event -> {
             setEnabledButton(new JButton(), false);
-            try {
-                Parser.getContentOfHTTPPage("https://habrahabr.ru/all/");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            setContentString("https://habrahabr.ru/all/");
         });
 
         add(buttonToViewAllArticles,
@@ -84,19 +72,12 @@ public class ControlPanel extends JPanel {
 
     private void addButtonToViewBestOfDayArticles() {
         buttonToViewBestOfDayArticles = new JButton("За день");
-        buttonToViewBestOfDayArticles.setBackground(Color.gray);
-        buttonToViewBestOfDayArticles.setForeground(Color.white);
-        buttonToViewBestOfDayArticles.setFocusPainted(false);
-        buttonToViewBestOfDayArticles.setBorderPainted(false);
+        setButton(buttonToViewBestOfDayArticles);
         buttonList.add(buttonToViewBestOfDayArticles);
 
         buttonToViewBestOfDayArticles.addActionListener(event -> {
             setEnabledButton(buttonToViewBestOfDayArticles, true);
-            try {
-                Parser.getContentOfHTTPPage("https://habrahabr.ru/top/");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            setContentString("https://habrahabr.ru/top/");
         });
 
         add(buttonToViewBestOfDayArticles,
@@ -107,19 +88,12 @@ public class ControlPanel extends JPanel {
 
     private void addButtonToViewBestOfWeekArticles() {
         buttonToViewBestOfWeekArticles = new JButton("За неделю");
-        buttonToViewBestOfWeekArticles.setBackground(Color.gray);
-        buttonToViewBestOfWeekArticles.setForeground(Color.white);
-        buttonToViewBestOfWeekArticles.setFocusPainted(false);
-        buttonToViewBestOfWeekArticles.setBorderPainted(false);
+        setButton(buttonToViewBestOfWeekArticles);
         buttonList.add(buttonToViewBestOfWeekArticles);
 
         buttonToViewBestOfWeekArticles.addActionListener(event -> {
             setEnabledButton(buttonToViewBestOfWeekArticles, true);
-            try {
-                Parser.getContentOfHTTPPage("https://habrahabr.ru/top/weekly/");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            setContentString("https://habrahabr.ru/top/weekly/");
         });
 
         add(buttonToViewBestOfWeekArticles,
@@ -130,19 +104,12 @@ public class ControlPanel extends JPanel {
 
     private void addButtonToViewBestOfMonthArticles() {
         buttonToViewBestOfMonthArticles = new JButton("За месяц");
-        buttonToViewBestOfMonthArticles.setBackground(Color.gray);
-        buttonToViewBestOfMonthArticles.setForeground(Color.white);
-        buttonToViewBestOfMonthArticles.setFocusPainted(false);
-        buttonToViewBestOfMonthArticles.setBorderPainted(false);
+        setButton(buttonToViewBestOfMonthArticles);
         buttonList.add(buttonToViewBestOfMonthArticles);
 
         buttonToViewBestOfMonthArticles.addActionListener(event -> {
             setEnabledButton(buttonToViewBestOfMonthArticles, true);
-            try {
-                Parser.getContentOfHTTPPage("https://habrahabr.ru/top/monthly/");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            setContentString("https://habrahabr.ru/top/monthly/");
         });
 
         add(buttonToViewBestOfMonthArticles,
@@ -153,19 +120,13 @@ public class ControlPanel extends JPanel {
 
     private void addButtonToViewBestOfAllTimeArticles() {
         buttonToViewBestOfAllTimeArticles = new JButton("За всё время");
-        buttonToViewBestOfAllTimeArticles.setBackground(Color.gray);
-        buttonToViewBestOfAllTimeArticles.setForeground(Color.white);
-        buttonToViewBestOfAllTimeArticles.setFocusPainted(false);
-        buttonToViewBestOfAllTimeArticles.setBorderPainted(false);
+        setButton(buttonToViewBestOfAllTimeArticles);
         buttonList.add(buttonToViewBestOfAllTimeArticles);
 
         buttonToViewBestOfAllTimeArticles.addActionListener(event -> {
             setEnabledButton(buttonToViewBestOfAllTimeArticles, true);
-            try {
-                Parser.getContentOfHTTPPage("https://habrahabr.ru/top/alltime/");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            setContentString("https://habrahabr.ru/top/alltime/");
+
         });
 
         add(buttonToViewBestOfAllTimeArticles,
@@ -174,28 +135,23 @@ public class ControlPanel extends JPanel {
                         new Insets(0, 0, 0, 0), 0, 0));
     }
 
-    private void addUpdateButton(){
-        ImageIcon imageIcon = new ImageIcon("icons//update.png");
-        updateButton = new JButton(imageIcon);
-        updateButton.setBackground(Color.darkGray);
-        updateButton.setFocusPainted(false);
-        updateButton.setBorderPainted(false);
-
-        updateButton.addActionListener(event -> {
-
-        });
-
-        add(updateButton,
-                new GridBagConstraints(0, 4, 2, 1, 0, 0,
-                        GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
-                        new Insets(20, 0, 0, 0), 0, 0));
-    }
-
-    private void setEnabledButton(JButton button, boolean bool){
-        for (JButton b : buttonList){
+    private void setEnabledButton(JButton button, boolean bool) {
+        for (JButton b : buttonList) {
             b.setEnabled(bool);
         }
         button.setEnabled(false);
+    }
+
+    private void setContentString(String pageAddress) {
+        currentContent = pageAddress;
+        Parser.setContentStringWithHTML(currentContent);
+    }
+
+    private void setButton(JButton button) {
+        button.setBackground(Color.white);
+        button.setForeground(Color.darkGray);
+        button.setFocusPainted(false);
+        button.setBorderPainted(false);
     }
 
 }
