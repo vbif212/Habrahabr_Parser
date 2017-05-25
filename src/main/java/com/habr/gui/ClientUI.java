@@ -13,28 +13,14 @@ public class ClientUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         GUI();
+        ContentPanel cp = new ContentPanel();
+        add(new HeadPanel(cp), BorderLayout.NORTH);
+        add(cp, BorderLayout.CENTER);
         setVisible(true);
         //setExtendedState(MAXIMIZED_BOTH);
     }
 
-    public void GUI() throws Exception {
-        /*
-        String s = getContentOfHTTPPage("https://habrahabr.ru");
-        Document html = Jsoup.parse(s);
-        Elements e = html.select("div.post.post_teaser.shortcuts_item");
-        Element e1 = e.get(0);
-        Element e2 = e1.select("img").first();
-        String url = e2.absUrl("src");
-        Panel p = new Panel(url);
-        add(p);
-        p.repaint();
-        ImageIcon ic = new ImageIcon("img.png");
-        JLabel l = new JLabel(ic);
-        add(l);*/
-        // getRootPane().setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.darkGray));
-        add(new ContentPanel(), BorderLayout.CENTER);
-        add(new BackComandPanel(), BorderLayout.WEST);
+    private void GUI(){
+
     }
-
-
 }
