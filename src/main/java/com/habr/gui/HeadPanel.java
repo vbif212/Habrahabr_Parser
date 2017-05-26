@@ -5,9 +5,10 @@ import java.awt.*;
 
 public class HeadPanel extends JPanel {
 
-    JLabel labelForPageNumber;
-    ContentPanel contentPanel;
-    String pageAddress;
+    private JLabel labelForPageNumber;
+    private ContentPanel contentPanel;
+    private String pageAddress;
+    static JPanel swithcingPanel;
 
     HeadPanel(ContentPanel cp) {
         setBackground(Color.white);
@@ -27,20 +28,20 @@ public class HeadPanel extends JPanel {
     }
 
     private void addPanelForSwitchingPages() {
-        JPanel swithcingPanel = new JPanel();
+        swithcingPanel = new JPanel();
         swithcingPanel.setLayout(new GridBagLayout());
         swithcingPanel.setBackground(Color.white);
-        addLeftButton(swithcingPanel);
-        addLabelForPageNumber(swithcingPanel);
-        addRightButton(swithcingPanel);
+        addLeftButton();
+        addLabelForPageNumber();
+        addRightButton();
         add(swithcingPanel, BorderLayout.CENTER);
     }
 
-    private void addLeftButton(JPanel panel) {
+    private void addLeftButton() {
         ImageIcon imageIcon = new ImageIcon("icons//left.png");
         JButton leftButton = new JButton(imageIcon);
         setStyleForButtons(leftButton, false);
-        panel.add(leftButton,
+        swithcingPanel.add(leftButton,
                 new GridBagConstraints(0, 0, 1, 1, 0, 0,
                         GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                         new Insets(0, 85, 0, 20), 0, 0));
@@ -55,21 +56,21 @@ public class HeadPanel extends JPanel {
         });
     }
 
-    private void addLabelForPageNumber(JPanel panel) {
+    private void addLabelForPageNumber() {
         labelForPageNumber = new JLabel("1");
         labelForPageNumber.setForeground(Color.darkGray);
         labelForPageNumber.setFont(new Font("Times Roman", Font.PLAIN, 25));
-        panel.add(labelForPageNumber,
+        swithcingPanel.add(labelForPageNumber,
                 new GridBagConstraints(1, 0, 1, 1, 0, 0,
                         GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                         new Insets(0, 0, 0, 0), 0, 0));
     }
 
-    private void addRightButton(JPanel panel) {
+    private void addRightButton() {
         ImageIcon imageIcon = new ImageIcon("icons//right.png");
         JButton rightButton = new JButton(imageIcon);
         setStyleForButtons(rightButton, false);
-        panel.add(rightButton,
+        swithcingPanel.add(rightButton,
                 new GridBagConstraints(2, 0, 1, 1, 0, 0,
                         GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                         new Insets(0, 20, 0, 0), 0, 0));
